@@ -1,0 +1,3 @@
+(library
+ (name linearpairingheap)
+ (libraries heap ordered ))

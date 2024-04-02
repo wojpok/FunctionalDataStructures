@@ -1,0 +1,3 @@
+(library
+ (name benchmarkheap)
+ (libraries heap leftistheap pairingheap splayheap benchmarklist ordered linearpairingheap))
