@@ -1,0 +1,3 @@
+(library
+ (name treaps)
+ (libraries maybe tree set ordered))

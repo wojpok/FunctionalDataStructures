@@ -1,0 +1,3 @@
+(library
+ (name redblacktree)
+ (libraries maybe tree set ordered))

@@ -1,0 +1,3 @@
+(library
+ (name splayheap)
+ (libraries heap ordered))

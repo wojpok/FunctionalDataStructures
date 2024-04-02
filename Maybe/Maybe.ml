@@ -2,7 +2,8 @@
 
 let fmap f = function
   | Some x  -> Some (f x)
-  | None    -> None 
+  | None    -> None
+  let rfmap m f = fmap f m
 
 let bind m f = 
   match m with
