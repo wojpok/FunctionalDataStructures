@@ -49,3 +49,4 @@ let uncons : 'a stream -> ('a * 'a stream) option = fun xs ->
   match !xs with
   | Nil -> None
   | Cons(x, xs) -> return (x, xs)
+

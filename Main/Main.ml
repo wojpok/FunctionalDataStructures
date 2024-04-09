@@ -1,0 +1,1 @@
+let () = print_endline "Main file"

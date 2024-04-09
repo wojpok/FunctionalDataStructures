@@ -8,9 +8,7 @@ module type SEED = sig val seed: int end
 module TreepSet(H: SEED)(S : ORDERED): SET with type t = S.t = struct
   let seed = H.seed
 
-  let hash seed =
-    let t = 16807 * (seed mod 127773) - 2836 * (seed mod 127773) in
-    if t > 0 then t else t + 2147483647
+  let hash = Rand.hash
 
   type t = S.t
   let cmp = S.compare

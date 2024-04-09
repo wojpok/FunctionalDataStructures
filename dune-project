@@ -1,20 +1,20 @@
 (lang dune 2.9)
 
 
-(name WaveFunctionCollapse)
+(name FunctionalDataStructures)
 
 (generate_opam_files true)
 
 (source
- (github wojpok/WaveFunctionCollapse))
+ (github wojpok/FunctionalDataStructures))
 
 (authors "Woj Pok")
 
-(maintainers "Maintainer Name")
+(maintainers "Woj Pok")
 
 (license LICENSE)
 
-(documentation https://hackmd.io/tKDH0bNGTH-vkeymuzAsOw)
+(documentation README.md)
 
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
