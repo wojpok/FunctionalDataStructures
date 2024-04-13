@@ -50,3 +50,22 @@ let uncons : 'a stream -> ('a * 'a stream) option = fun xs ->
   | Nil -> None
   | Cons(x, xs) -> return (x, xs)
 
+let shd : 'a stream -> 'a = fun xs ->
+  match !xs with
+  | Cons(x, _) -> x
+  | _ -> failwith "EMPTY"
+
+let stl : 'a stream -> 'a stream = fun xs ->
+  match !xs with
+  | Cons(_, xs) -> xs
+  | _ -> failwith "EMPTY"
+
+let susp_list_to_stream : 'a list lazy_t -> 'a stream = fun xs ->
+  lazy(match !xs with
+  | [] -> Nil
+  | x :: xs -> Cons(x, from_list xs))
+
+let rec map: ('a -> 'b) -> 'a stream -> 'b stream = fun f xs -> 
+  match !xs with
+  | Nil -> lazy Nil
+  | Cons(x, xs) -> lazy (Cons(f x, map f xs))

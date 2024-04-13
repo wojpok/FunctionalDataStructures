@@ -6,7 +6,7 @@ module KMQueue : QUEUE = struct
 
   let empty = E
   let isEmpty = function E -> true | _ -> false
-  let cons x = function
+  let snoc x = function
   | E -> Q(x, lazy Nil, [])
   | Q(h, f, xs) -> Q(h, f, x :: xs)
   let tail = function
@@ -23,4 +23,6 @@ module KMQueue : QUEUE = struct
   let head = function
   | E -> failwith "Empty"
   | Q(x, _, _) -> x
+
+  let size _ = failwith "TODO"
 end

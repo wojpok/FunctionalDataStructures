@@ -55,4 +55,6 @@ module Deque : DEQUE = struct
     match !f with
     | Nil -> empty
     | Cons(_, r') -> check (lf, f, lr - 1, r')
+
+  let size (lenf, _, lenr, _) = lenf + lenr
 end

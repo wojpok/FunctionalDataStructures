@@ -1,0 +1,3 @@
+(library
+ (name benchmarkqueue)
+ (libraries queue bankersqueue fastbankersqueue rand maybe stream))
