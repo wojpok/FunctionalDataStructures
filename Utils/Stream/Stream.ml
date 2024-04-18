@@ -3,7 +3,9 @@ open Maybe ;;
 type 'a streamCell = Nil | Cons of 'a * 'a stream
  and 'a stream = 'a streamCell lazy_t
 
-type 'a queue = int * 'a stream * int * 'a stream
+let empty = lazy Nil
+
+let singleton x = lazy (Cons (x, empty))
 
 let (!) = Lazy.force
 
@@ -39,7 +41,7 @@ let rec to_list xs =
   | Cons (x, xs) -> x :: to_list xs
 
 let rec from_list = function
-| [] -> lazy(Nil)
+| [] -> empty
 | x :: xs -> lazy(Cons(x, from_list xs))
   
 let reverse xs = 
@@ -49,6 +51,9 @@ let uncons : 'a stream -> ('a * 'a stream) option = fun xs ->
   match !xs with
   | Nil -> None
   | Cons(x, xs) -> return (x, xs)
+
+let cons : 'a -> 'a stream -> 'a stream = fun x xs ->
+  lazy (Cons(x, xs))
 
 let shd : 'a stream -> 'a = fun xs ->
   match !xs with
@@ -67,5 +72,5 @@ let susp_list_to_stream : 'a list lazy_t -> 'a stream = fun xs ->
 
 let rec map: ('a -> 'b) -> 'a stream -> 'b stream = fun f xs -> 
   match !xs with
-  | Nil -> lazy Nil
+  | Nil -> empty
   | Cons(x, xs) -> lazy (Cons(f x, map f xs))

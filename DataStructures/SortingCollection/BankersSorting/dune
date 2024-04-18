@@ -1,0 +1,3 @@
+(library
+ (name bankerssorting)
+ (libraries sortingcollection ordered stream))

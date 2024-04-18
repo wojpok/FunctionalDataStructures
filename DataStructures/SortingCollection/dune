@@ -1,0 +1,3 @@
+(library
+ (name sortingcollection)
+ (libraries ordered))
