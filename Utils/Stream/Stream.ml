@@ -74,3 +74,16 @@ let rec map: ('a -> 'b) -> 'a stream -> 'b stream = fun f xs ->
   match !xs with
   | Nil -> empty
   | Cons(x, xs) -> lazy (Cons(f x, map f xs))
+
+let isEmpty : 'a stream -> bool = fun xs ->
+  match !xs with
+  | Nil -> true
+  | Cons(_, _) -> false 
+
+let rec foldLeft : ('acc -> 'a -> 'acc) -> 'acc -> 'a stream -> 'acc = fun f acc xs ->
+  match !xs with
+  | Nil -> acc
+  | Cons(x, xs) -> foldLeft f  (f acc x) xs
+
+let length : 'a stream -> int = fun xs ->
+  foldLeft (fun acc _ -> acc + 1) 0 xs

@@ -23,6 +23,4 @@ module KMQueue : QUEUE = struct
   let head = function
   | E -> failwith "Empty"
   | Q(x, _, _) -> x
-
-  let size _ = failwith "TODO"
 end

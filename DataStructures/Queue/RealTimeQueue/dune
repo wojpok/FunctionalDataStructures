@@ -1,0 +1,3 @@
+(library
+ (name realtimequeue)
+ (libraries queue stream))

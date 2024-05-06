@@ -5,7 +5,7 @@ module type CONSTANT = sig
   val c: int
 end
 
-module BankersQueue(C : CONSTANT) : QUEUE = struct
+module BankersQueue(C : CONSTANT) : SIZED_QUEUE = struct
   let c = C.c
 
   type 'a queue = int * 'a stream * int * 'a stream
