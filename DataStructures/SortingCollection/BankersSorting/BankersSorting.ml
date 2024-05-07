@@ -1,6 +1,6 @@
 let (!) = Stream.(!)
 
-module BankersSorting(S : Ordered.ORDERED) : Sortingcollection.SortingCollection.SORTING_COLLECTION with type t = S.t =
+module BankersSorting(S : Ordered.ORDERED) : SortingCollection.SORTING_COLLECTION with type t = S.t =
 struct
   type t = S.t
   let compare = S.compare
@@ -29,7 +29,7 @@ struct
 
   let sort (_, segs) = 
     let rec mergeAll = function
-    | (xs, []) -> Stream.to_list xs
+    | (xs, []) -> Stream.toList xs
     | (xs, seg :: segs) -> mergeAll (merge (xs, seg), segs)
     in
     mergeAll (Stream.empty, segs)

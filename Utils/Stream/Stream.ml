@@ -35,17 +35,17 @@ let (++) xs ys =
     | Nil -> ys
   in iter xs
 
-let rec to_list xs =
+let rec toList xs =
   match !xs with
   | Nil -> []
-  | Cons (x, xs) -> x :: to_list xs
+  | Cons (x, xs) -> x :: toList xs
 
-let rec from_list = function
+let rec fromList = function
 | [] -> empty
-| x :: xs -> lazy(Cons(x, from_list xs))
+| x :: xs -> lazy(Cons(x, fromList xs))
   
 let reverse xs = 
-  to_list xs |> List.rev |> from_list
+  toList xs |> List.rev |> fromList
 
 let uncons : 'a stream -> ('a * 'a stream) option = fun xs -> 
   match !xs with
@@ -65,10 +65,10 @@ let stl : 'a stream -> 'a stream = fun xs ->
   | Cons(_, xs) -> xs
   | _ -> failwith "EMPTY"
 
-let susp_list_to_stream : 'a list lazy_t -> 'a stream = fun xs ->
+let suspListToStream : 'a list lazy_t -> 'a stream = fun xs ->
   lazy(match !xs with
   | [] -> Nil
-  | x :: xs -> Cons(x, from_list xs))
+  | x :: xs -> Cons(x, fromList xs))
 
 let rec map: ('a -> 'b) -> 'a stream -> 'b stream = fun f xs -> 
   match !xs with

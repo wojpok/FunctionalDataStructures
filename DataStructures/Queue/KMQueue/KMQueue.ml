@@ -7,7 +7,7 @@ module KMQueue : QUEUE = struct
   let empty = E
   let isEmpty = function E -> true | _ -> false
   let snoc x = function
-  | E -> Q(x, lazy Nil, [])
+  | E -> Q(x, Stream.empty, [])
   | Q(h, f, xs) -> Q(h, f, x :: xs)
   let tail = function
   | E -> failwith "Empty"
@@ -15,7 +15,7 @@ module KMQueue : QUEUE = struct
     match !f with
     | Nil -> 
       begin match List.rev xs with 
-      | x :: xs -> Q(x, from_list xs, [])
+      | x :: xs -> Q(x, Stream.fromList xs, [])
       | [] -> empty
       end
     | Cons(x, f) ->

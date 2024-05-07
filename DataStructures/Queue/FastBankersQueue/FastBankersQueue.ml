@@ -10,13 +10,13 @@ module FastBankersQueue(C : CONSTANT) : SIZED_QUEUE = struct
 
   type 'a queue = int * 'a stream * int * 'a list
 
-  let empty = 0, lazy Nil, 0, []
+  let empty = 0, Stream.empty, 0, []
   let isEmpty (lenf, _, _, _) = lenf = 0
 
   let check ((lenf, f, lenr, r) as q) =
     if lenr <= c * lenf 
       then q
-      else (lenf + lenr, f ++ susp_list_to_stream (lazy (List.rev r)), 0, [])
+      else (lenf + lenr, f ++ suspListToStream (lazy (List.rev r)), 0, [])
 
   let snoc x (lenf, f, lenr, r) = 
     check @@ (lenf, f, lenr + 1, x :: r)

@@ -1,3 +1,3 @@
 (library
- (name bankerssorting)
+ (name readltimesorting)
  (libraries sortingCollection ordered stream))

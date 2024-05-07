@@ -7,7 +7,7 @@ module Deque : DEQUE = struct
 
   let c = 2
 
-  let empty = (0, lazy Nil, 0, lazy Nil)
+  let empty = (0, Stream.empty, 0, Stream.empty)
 
   let isEmpty (f, _, r, _) = (f + r) = 0
 
@@ -27,7 +27,7 @@ module Deque : DEQUE = struct
       (i, f', j, r')
     else q
 
-  let cons x (lf, f, lr, r) = check (lf + 1, lazy (Cons(x, f)), lr, r)
+  let cons x (lf, f, lr, r) = check (lf + 1, Stream.cons x f, lr, r)
   let head (lf, f, lr, r) =
     match !f with
     | Cons(x, _) -> x
@@ -41,7 +41,7 @@ module Deque : DEQUE = struct
     | Nil -> empty
     | Cons(_, f') -> check (lf - 1, f', lr, r)
 
-  let snoc (lf, f, lr, r) x = check (lf, f, lr + 1, lazy(Cons(x, r)))
+  let snoc (lf, f, lr, r) x = check (lf, f, lr + 1, Stream.cons x  r)
 
   let last (lf, f, lr, r) = 
     match !r with

@@ -4,11 +4,11 @@ let hash seed =
 
 let rec randomStream seed =
   let s' = hash seed in
-  lazy (Stream.Cons(s', randomStream s'))
+  Stream.cons s' @@ randomStream s'
 
 let rec randomSizedStream size seed = 
   if size <= 0 then 
-    lazy Stream.Nil
+    Stream.empty
   else
     let s' = hash seed in
-    lazy (Stream.Cons(s', randomSizedStream (size - 1) s'))
+    Stream.cons s' @@ randomSizedStream (size - 1) s'

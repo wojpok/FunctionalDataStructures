@@ -1,4 +1,4 @@
-module BottomUpMergeSort(S : Ordered.ORDERED) : Sortingcollection.SortingCollection.SORTING_COLLECTION with type t = S.t =
+module BottomUpMergeSort(S : Ordered.ORDERED) : SortingCollection.SORTING_COLLECTION with type t = S.t =
 struct
   type t = S.t
   let compare = S.compare

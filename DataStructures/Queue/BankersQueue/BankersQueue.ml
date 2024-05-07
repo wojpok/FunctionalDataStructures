@@ -10,16 +10,16 @@ module BankersQueue(C : CONSTANT) : SIZED_QUEUE = struct
 
   type 'a queue = int * 'a stream * int * 'a stream
 
-  let empty = 0, lazy Nil, 0, lazy Nil
+  let empty = 0, Stream.empty, 0, Stream.empty
   let isEmpty (lenf, _, _, _) = lenf = 0
 
   let check ((lenf, f, lenr, r) as q) =
     if lenr <= c * lenf 
       then q
-      else (lenf + lenr, f ++ reverse r, 0, lazy Nil)
+      else (lenf + lenr, f ++ reverse r, 0, Stream.empty)
 
   let snoc x (lenf, f, lenr, r) = 
-    check @@ (lenf, f, lenr + 1, lazy (Cons(x, r)))
+    check @@ (lenf, f, lenr + 1, Stream.cons x r)
 
   let head = function
   | (0, _, _, _) -> failwith "head :: EMPTY"
