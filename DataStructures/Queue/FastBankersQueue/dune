@@ -1,3 +1,3 @@
 (library
- (name fastbankersqueue)
- (libraries queue stream))
+ (name FastBankersQueue)
+ (libraries Queue Stream))

@@ -1,2 +1,2 @@
 (library
-  (name ordered))
+  (name Ordered))

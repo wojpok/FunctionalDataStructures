@@ -1,3 +1,3 @@
 (library
- (name benchmarkheap)
- (libraries heap leftistheap pairingheap splayheap benchmarklist ordered linearpairingheap))
+ (name BenchmarkHeap)
+ (libraries Heap LeftistHeap PairingHeap SplayHeap BenchmarkList Ordered LinearPairingHeap))

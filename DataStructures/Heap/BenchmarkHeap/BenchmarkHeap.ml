@@ -20,7 +20,7 @@ module TestHeap(H : IntHeap) = struct
       else false
     | _ -> true
     in
-    let ins = insertAll H.empty Benchmarklist.BenchmarkList.xs in
+    let ins = insertAll H.empty BenchmarkList.xs in
     let acc = removeAll [] ins in
     let res = checkSorted acc in
     if res then
@@ -30,7 +30,7 @@ module TestHeap(H : IntHeap) = struct
 end
 
 
-module Test1 = TestHeap(Pairingheap.PairingHeap.PairingHeap(Int))
-module Test2 = TestHeap(Pairingheap.PairingHeap.PairingHeapFoldr(Int))
-module Test3 = TestHeap(Pairingheap.PairingHeap.PairingHeapBalanced(Int))
-module Test4 = TestHeap(Linearpairingheap.LinearPairingHeap.LinearPairingHeap(Int))
+module Test1 = TestHeap(PairingHeap.PairingHeap(Int))
+module Test2 = TestHeap(PairingHeap.PairingHeapFoldr(Int))
+module Test3 = TestHeap(PairingHeap.PairingHeapBalanced(Int))
+module Test4 = TestHeap(LinearPairingHeap.LinearPairingHeap(Int))

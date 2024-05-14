@@ -1,3 +1,3 @@
 (library
- (name coset)
-  (libraries set maybe tree))
+ (name CoSet)
+  (libraries Set Maybe Tree))

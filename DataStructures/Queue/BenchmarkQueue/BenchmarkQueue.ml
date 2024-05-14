@@ -26,7 +26,7 @@ module TestQueue(Q : Queue.QUEUE) = struct
 
 end
 
-module BenchmarkBanker      = TestQueue(Bankersqueue.BankersQueue.BQueue)
-module BenchmarkBanker2     = TestQueue(Bankersqueue.BankersQueue.BQueue2)
-module BenchmarkFastBanker  = TestQueue(Fastbankersqueue.FastBankersQueue.FBQueue)
-module BenchmarkFastBanker2 = TestQueue(Fastbankersqueue.FastBankersQueue.FBQueue2)
+module BenchmarkBanker      = TestQueue(BankersQueue.BQueue)
+module BenchmarkBanker2     = TestQueue(BankersQueue.BQueue2)
+module BenchmarkFastBanker  = TestQueue(FastBankersQueue.FBQueue)
+module BenchmarkFastBanker2 = TestQueue(FastBankersQueue.FBQueue2)

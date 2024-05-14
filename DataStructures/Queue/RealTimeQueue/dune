@@ -1,3 +1,3 @@
 (library
- (name realtimequeue)
- (libraries queue stream))
+ (name RealTimeQueue)
+ (libraries Queue Stream))
