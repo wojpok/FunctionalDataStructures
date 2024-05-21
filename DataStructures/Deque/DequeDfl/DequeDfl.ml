@@ -1,11 +1,12 @@
 open Deque ;;
 open Stream ;;
 
+module type CONST = sig val c : int end
 
-module Deque : DEQUE = struct
+module Deque(C : CONST) : DEQUE = struct
   type 'a queue = (int * 'a stream * int * 'a stream)
 
-  let c = 2
+  let c = C.c
 
   let empty = (0, Stream.empty, 0, Stream.empty)
 
@@ -28,7 +29,7 @@ module Deque : DEQUE = struct
     else q
 
   let cons x (lf, f, lr, r) = check (lf + 1, Stream.cons x f, lr, r)
-  let head (lf, f, lr, r) =
+  let head (_, f, _, r) =
     match !f with
     | Cons(x, _) -> x
     | Nil -> 
@@ -43,7 +44,7 @@ module Deque : DEQUE = struct
 
   let snoc (lf, f, lr, r) x = check (lf, f, lr + 1, Stream.cons x  r)
 
-  let last (lf, f, lr, r) = 
+  let last (_, f, _, r) = 
     match !r with
     | Cons(x, _) -> x
     | Nil -> 
@@ -52,7 +53,7 @@ module Deque : DEQUE = struct
       | Cons(x, _) -> x
 
   let init (lf, f, lr, r) =
-    match !f with
+    match !r with
     | Nil -> empty
     | Cons(_, r') -> check (lf, f, lr - 1, r')
 
