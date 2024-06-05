@@ -1,0 +1,3 @@
+(library
+ (name RedundantZerolessRandomAccessList)
+ (libraries RandomAccessList Stream))
